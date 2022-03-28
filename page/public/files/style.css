@@ -1,0 +1,36 @@
+body { 
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: auto;
+    margin-right: auto;
+    overflow: visible;
+    font-weight: bold;
+    font-size: 36px;
+    font-family: Arial;
+    text-shadow: 2px 2px #000000;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
+.avatar_img {
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
+
+#title {
+    position: relative;
+    top: 15px;
+}
+
+#views {
+    position: relative;
+    top: 0px;
+}
+
+#channel {
+    position: relative;
+    top: -80px;
+    font-size: 48px;
+}
