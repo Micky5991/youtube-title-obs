@@ -1,0 +1,29 @@
+{
+    "name": "Youtube Title to OBS Extension",
+    "description": "Read title",
+    "version": "0.1",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.youtube.com/*",
+                "http://localhost/*"
+            ],
+            "all_frames": true,
+            "run_at": "document_idle",
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "host_permissions": [
+        "http://localhost:5000/*"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src http://localhost;  object-src http://localhost;"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ]
+}
