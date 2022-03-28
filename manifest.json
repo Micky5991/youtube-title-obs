@@ -1,6 +1,6 @@
 {
     "name": "Youtube Title to OBS Extension",
-    "description": "Read title",
+    "description": "Youtube Title to OBS Extension, you need to run a local webserver (HTML+CSS+JS) to display stuff",
     "version": "0.1",
     "manifest_version": 3,
     "content_scripts": [
@@ -25,5 +25,17 @@
     "permissions": [
         "activeTab",
         "tabs"
-    ]
+    ],
+    "action": {
+        "default_icon": {
+            "16": "favicon-16x16.png",
+            "32": "favicon-32x32.png"
+        }
+    },
+    "icons": {
+        "16": "favicon-16x16.png",
+        "32": "favicon-32x32.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    }
 }
