@@ -1,4 +1,5 @@
 /background.js
 /youtube-title-obs.zip
 /page/node_modules/*
+/page/currentvideo.json
 /build/*
