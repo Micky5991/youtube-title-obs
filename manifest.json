@@ -1,6 +1,10 @@
 {
     "name": "Youtube Title to OBS Extension",
+<<<<<<< HEAD
     "description": "Youtube Title to OBS Extension, you need to run a local webserver (HTML+CSS+JS) to display stuff",
+=======
+    "description": "Read title",
+>>>>>>> f5e5d17ce734f5a1e8e2e2d98e189af7a1569062
     "version": "0.1",
     "manifest_version": 3,
     "content_scripts": [
