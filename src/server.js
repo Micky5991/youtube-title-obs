@@ -11,7 +11,7 @@ fs.writeFileSync(path.resolve(__dirname, './currentvideo.json'), JSON.stringify(
 
 app.get("/", (req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
-    fs.createReadStream(path.resolve(__dirname, './index.html')).pipe(res);
+    fs.createReadStream(path.resolve(__dirname, './public/index.html')).pipe(res);
 });
 
 app.get("/current", (req, res) => {
