@@ -5,30 +5,21 @@ function fetchJSON() {
         })
         .then(data => {
             let avatar = document.getElementById("avatar");
-            let img = document.createElement("img");
-            img.className = "avatar_img";
-            img.src = data.channelAvatar;
-            img.width = 250;
-            avatar.appendChild(img);
+            if (avatar.src !== data.channelAvatar && data.channelAvatar != null && data.channelAvatar.trim().length > 0) {
+                avatar.src = data.channelAvatar;
+            }
 
             let title = document.getElementById("title");
-            let titleDiv = document.createElement("div");
-            titleDiv.textContent = data.videoTitle;
-            title.appendChild(titleDiv);
-
-            let views = document.getElementById("views");
-            let viewsDiv = document.createElement("div");
-            viewsDiv.textContent = data.videoViews;
-            title.appendChild(viewsDiv);
+            title.textContent = data.videoTitle;
 
             let channelName = document.getElementById("channel");
-            let channelNameDiv = document.createElement("div");
-            channelNameDiv.textContent = data.channelName;
-            channelName.appendChild(channelNameDiv);
+            channelName.textContent = data.channelName;
+
         })
         .catch(err => {
             console.log(err);
         });
 }
 
+setInterval(fetchJSON, 1000);
 fetchJSON();
