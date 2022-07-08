@@ -1,3 +1,5 @@
+let abortController = null;
+
 function post(url = "", data = {}) {
     const response = fetch(url, {
         method: "POST",
@@ -7,12 +9,31 @@ function post(url = "", data = {}) {
         },
         redirect: "follow",
         referrerPolicy: "no-referrer",
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        signal: abortController.signal,
     })
         .then(response => {
             return response.json();
         });
 
+}
+
+function isDataEqual(oldData, newData) {
+    const newKeys = Object.keys(newData);
+
+    return newKeys.every(key => {
+        console.log('xyz', oldData[key], newData[key], oldData[key] === newData[key])
+
+        return oldData[key] === newData[key];
+    });
+}
+
+function cancelPreviousRequest() {
+    if (abortController != null) {
+        abortController.abort();
+    }
+
+    abortController = new AbortController();
 }
 
 async function main() {
@@ -42,14 +63,17 @@ async function main() {
         };
         // console.log("--- after neww ---");
 
+        cancelPreviousRequest();
+
         await fetch("http://localhost:5000/current", {
             method: "GET",
+            signal: abortController.signal,
         })
             .then(response => response.text())
             .then(data => {
                 data = data ? JSON.parse(data) : {};
                 // @ts-ignore
-                if (data.videoTitle !== neww.videoTitle || data.channelName !== neww.channelName) {
+                if (isDataEqual(data, neww) === false) {
                     console.log("--- we are not the same ---");
                     post("http://localhost:5000", neww);
                     console.log("--- I probably deed it ---");
@@ -61,12 +85,16 @@ async function main() {
 
         console.log("--- i made it past? ---");
     } catch (err) {
-        if (err instanceof TypeError) {
-
-        } else {
-
-        }
+        console.log('error', err);
     }
 }
 
-setInterval(main, 10000);
+document.addEventListener('yt-navigate-finish', () => {
+    setTimeout(() => main(), 1000);
+});
+document.body.addEventListener('yt-page-data-updated', () => {
+    setTimeout(() => main(), 1000);
+});
+
+setInterval(main, 5000);
+main();
