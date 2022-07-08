@@ -3,3 +3,5 @@
 /page/node_modules/*
 /page/currentvideo.json
 /build/*
+
+.idea/
