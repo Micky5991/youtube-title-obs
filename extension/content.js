@@ -89,12 +89,12 @@ async function main() {
     }
 }
 
-document.addEventListener('yt-navigate-finish', () => {
-    setTimeout(() => main(), 1000);
-});
-document.body.addEventListener('yt-page-data-updated', () => {
-    setTimeout(() => main(), 1000);
-});
+// document.addEventListener('yt-navigate-finish', () => {
+//     setTimeout(() => main(), 1000);
+// });
+// document.body.addEventListener('yt-page-data-updated', () => {
+//     setTimeout(() => main(), 1000);
+// });
 
 setInterval(main, 5000);
 main();
