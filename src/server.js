@@ -7,6 +7,8 @@ const path = require("path");
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, './public/')));
 
+fs.writeFileSync(path.resolve(__dirname, './currentvideo.json'), JSON.stringify({}))
+
 app.get("/", (req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
     fs.createReadStream(path.resolve(__dirname, './index.html')).pipe(res);
